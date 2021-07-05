@@ -1,0 +1,7 @@
+<nav>
+    <ul class="d-flex mt-3">
+        <li class="mx-3"><a routerLink="/home" class="btn btn-primary">Home</a></li>
+        <li class="mx-3"><a routerLink="/dashboard" class="btn btn-primary">Dashboard</a></li>
+        <li class="mx-3"><a href="javascript:;" class="btn btn-danger" (click)="authService.logout()" *ngIf="authService.isLoggedIn()">Logout</a></li>
+    </ul>
+</nav>

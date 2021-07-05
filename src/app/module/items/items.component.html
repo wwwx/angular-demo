@@ -1,0 +1,2 @@
+<h3 appHighlight>{{ title | awesome }}</h3>
+<a href="javascript:;" class="d-block" *ngFor="let  item of items | async " routerLink="{{ './' + item.id }}">{{ item.id }} - {{ item.title }}</a>
