@@ -5,16 +5,16 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthGuard } from './service/auth.guard';
 
 const routes: Routes = [
-    // { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent,  },
     { path: 'dashboard', component: DashboardComponent },
     {
         path: 'auth',
-        // canActivate: [AuthGuard],
         loadChildren: () => import('./module/auth/auth.module').then((m) => m.AuthModule),
     },
     {
         path: 'items',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./module/items/items.module').then((m) => m.ItemsModule),
     }
 ];
@@ -22,5 +22,6 @@ const routes: Routes = [
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
+    providers: [AuthGuard]
 })
 export class AppRoutingModule {}

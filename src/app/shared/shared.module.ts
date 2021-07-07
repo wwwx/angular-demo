@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AwesomePipe } from './awesome.pipe';
 import { HighlightDirective } from './highlight.directive';
+import { UserService } from './user.service';
 
 
 
@@ -10,6 +11,7 @@ import { HighlightDirective } from './highlight.directive';
         AwesomePipe,
         HighlightDirective,
     ],
+    providers: [UserService],
     imports: [
         CommonModule
     ],

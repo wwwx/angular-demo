@@ -1,3 +1,4 @@
 {
-    "APP_TITLE": "欢迎使用 ANGULAR"
+	"APP_TITLE": "欢迎使用 ANGULAR",
+	"dashboard.title.label": "仪表板"
 }

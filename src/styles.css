@@ -1,23 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body {
+    padding-top: 60px;
 }
 
-img {
-    width: 100%;
-    height: auto;
+/* TAILWIND FILES */
+/*@tailwind base;*/
+/*@tailwind components;*/
+/*@tailwind utilities;*/
+
+
+/* COMPONENT CSS */
+.btn {
+    @apply py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
 }
 
-a {
-    text-decoration: none;
+.btn-danger {
+    @apply bg-red-500 text-white hover:bg-red-700
 }
 
-li {
-    list-style: none;
+.btn-primary {
+    @apply bg-indigo-500 text-white hover:bg-indigo-700
 }
-
-
 
 

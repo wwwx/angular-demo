@@ -13,7 +13,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { BlockItemComponent } from './components/block-item/block-item.component';
+import { LoadingService } from './shared/loading.service';
+import { NetworkInterceptor } from './service/network.interceptor';
+import { LanguageSelectComponent } from './components/language-select/language-select.component';
+import { EmojiComponent } from './components/emoji/emoji.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -26,6 +31,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         HomeComponent,
         DashboardComponent,
         HeaderComponent,
+        BlockItemComponent,
+        LanguageSelectComponent,
+        EmojiComponent,
     ],
     imports: [
         BrowserModule,
@@ -46,7 +54,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
             }
         }),
     ],
-    providers: [LoggerService],
+    providers: [LoggerService, LoadingService, { provide: HTTP_INTERCEPTORS, useClass: NetworkInterceptor, multi: true }],
     bootstrap: [AppComponent],
 })
 export class AppModule {

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, ElementRef, HostBinding, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-root',
@@ -7,24 +7,12 @@ import { TranslateService } from '@ngx-translate/core';
     styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-    constructor(public translate: TranslateService) {
+
+    constructor(private title: Title, private el: ElementRef) {
     }
 
     ngOnInit(): void {
-
-        // 语言初始化(若未设置语言, 则取浏览器语言)
-        const currentLanguage = localStorage.getItem('Current-Language') || this.translate.getBrowserCultureLang();
-        console.log(currentLanguage)
-        // 当在assets/i18n中找不到对应的语言翻译时，使用'zh-CN'作为默认语言
-        this.translate.setDefaultLang('zh-CN');
-        this.translate.use(currentLanguage);
-        // 记录当前设置的语言
-        localStorage.setItem('Current-Language', currentLanguage);
+        // Set title
+        // console.log(this.title.getTitle());
     }
-
-    setLanguage(lang: string): void {
-        this.translate.use(lang);
-        localStorage.setItem('Current-Language', lang);
-    }
-
 }

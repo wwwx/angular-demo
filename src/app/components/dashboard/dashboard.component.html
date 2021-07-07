@@ -1,1 +1,28 @@
-<button type="button" class="btn btn-info" (click)="toggle()">click</button>
+<div class="container mx-auto py-3">
+    <button type="button" class="btn btn-danger" (click)="loader.show()">show</button>
+    <button type="button" class="btn btn-primary mx-2" (click)="loader.hide()">hide</button>
+    <button type="button" class="btn btn-primary mx-2" (click)="fetchTopics()">Fetch Topics</button>
+    <button type="button" class="btn btn-primary mx-2" (click)="clearTopics()">Clear</button>
+</div>
+<div class="container mx-auto">
+
+    <div class="flex-grow-1">
+        <div class="spinner-border text-danger" role="status" *ngIf="loading$ | async">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div *ngIf="topics.length">{{ topics | json }}</div>
+    </div>
+    <div>
+        <app-emoji></app-emoji>
+        <input type="number" vlalue="xxxxx">
+    </div>
+    <div class="">
+        <canvas app-block-item style="width: 500px; height: 350px;"></canvas>
+    </div>
+    <div class="flex space-x-4">
+        <div class="flex-auto h-20 bg-yellow-400 rounded">short</div>
+        <div class="flex-auto h-20 bg-yellow-400 rounded">middle length</div>
+        <div class="flex-auto h-20 bg-yellow-400">long text and ...... end.</div>
+    </div>
+</div>
+
