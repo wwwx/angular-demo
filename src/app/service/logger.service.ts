@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
 
 @Injectable()
 export class LoggerService {
     list: string[] = [];
-    constructor() {}
+
+    constructor() {
+    }
 
     log(message: string): void {
-        console.log(message);
+        console.log(message, moment().format('dddd, MMMM Do YYYY, h:mm:ss a'));
     }
 
     add(message: string): void {

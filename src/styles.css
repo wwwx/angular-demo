@@ -4,9 +4,9 @@ body {
 }
 
 /* TAILWIND FILES */
-/*@tailwind base;*/
-/*@tailwind components;*/
-/*@tailwind utilities;*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 
 /* COMPONENT CSS */
@@ -14,12 +14,16 @@ body {
     @apply py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
 }
 
-.btn-danger {
+.btn-danger:not([disabled]) {
     @apply bg-red-500 text-white hover:bg-red-700
 }
 
-.btn-primary {
+.btn-primary:not([disabled]) {
     @apply bg-indigo-500 text-white hover:bg-indigo-700
 }
 
+.btn[disabled] {
+    cursor: not-allowed;
+    @apply bg-gray-300 text-gray-500
+}
 

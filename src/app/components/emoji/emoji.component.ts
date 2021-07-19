@@ -1,15 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-emoji',
-  templateUrl: './emoji.component.html',
-  styleUrls: ['./emoji.component.css']
+    selector: 'app-emoji',
+    template: '😀 😃 😄 😁 😆 😅 😂 🤣',
 })
-export class EmojiComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class EmojiComponent {
 }

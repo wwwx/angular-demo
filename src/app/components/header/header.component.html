@@ -2,8 +2,8 @@
     <ul class="bg-indigo-800 text-white flex py-5 px-2 dark:bg-indigo-200">
 
         <li class="mx-2"><a routerLink="/">&times;</a></li>
-        <li class="mx-2"><a routerLink="/home">Home</a></li>
-        <li class="mx-2"><a routerLink="/dashboard">Dashboard</a></li>
+        <li class="mx-2"><a routerLink="/home">{{ 'home.title.label' | translate | uppercase }}</a></li>
+        <li class="mx-2"><a routerLink="/dashboard">{{ 'dashboard.title.label' | translate | uppercase }}</a></li>
         <li class="mx-2"><a href="javascript:;" (click)="authService.logout()"
                             *ngIf="authService.isLoggedIn()">Logout</a></li>
     </ul>

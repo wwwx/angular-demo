@@ -1,9 +1,22 @@
-<div class="login-container p-3">
-    <div class="mb-3">
-        <input type="email" class="form-control" id="email" placeholder="name@example.com" />
+<div class=" p-3 mx-auto max-w-md" [formGroup]="loginForm">
+    <div class="my-3" [class.error]="submitted && loginForm.controls.email.errors">
+        <input type="email" class="w-full" formControlName="email" placeholder="name@example.com"/>
+        <div class="invalid-feedback text-red-500" *ngIf="submitted && loginForm.controls.email.errors?.required">Please
+            enter your email
+        </div>
+        <div class="invalid-feedback text-red-500" *ngIf="submitted && loginForm.controls.email.errors?.pattern">Please
+            enter valid email
+        </div>
     </div>
-    <div class="">
-        <input type="password" class="form-control" id="password" placeholder="Password" />
+    <div class="my-3" [class.error]="submitted && loginForm.controls.password.errors">
+        <input type="password" class="w-full" formControlName="password" placeholder="Password"/>
+        <div class="invalid-feedback text-red-500"
+             *ngIf="submitted && loginForm.controls.password.errors?.minLength">Password must be 6 character at
+            least
+        </div>
+        <div class="invalid-feedback text-red-500" *ngIf="submitted && loginForm.controls.password.errors?.M">Must start with 'Nwd'</div>
     </div>
-    <button type="button" class="btn btn-primary mt-3" (click)="submit()">Sign in</button>
+    <button type="button" class="w-full btn btn-primary mt-3" (click)="submit()">SIGN
+        IN
+    </button>
 </div>

@@ -1,2 +1,21 @@
-<button type="button" class="btn btn-primary" (click)="toggle()">click</button>
-<app-popup [isOpen]="isOpen"></app-popup>
+<div class="m-2">
+    <button type="button" class="btn btn-primary" (click)="toggle()">click</button>
+    <button type="button" class="btn btn-primary ml-4" (click)="testHttp()">text http</button>
+    <button type="button" class="btn btn-primary ml-4" (click)="test()">test click</button>
+    <button type="button" class="btn btn-primary ml-4" id="btn">stop interval</button>
+    <button type="button" class="btn btn-primary ml-4" (click)="countDown()">countdown{{ COUNT }}</button>
+    <button type="button" class="btn btn-danger ml-4" (click)="testConcat()">test concat</button>
+    <button type="button" class="btn btn-danger ml-4" (click)="testCreate()">test create</button>
+    <button type="button" class="btn btn-danger ml-4" (click)="testMerge()">test merge</button>
+    <button type="button" class="btn btn-danger ml-4" (click)="testZip()">test zip</button>
+    <app-popup [isOpen]="isOpen"></app-popup>
+</div>
+
+<div class="m-2">
+    <button type="button" class="btn btn-primary" id="resume">resume</button>
+    <button type="button" class="btn btn-primary ml-4" id="pause">pause</button>
+</div>
+
+<div class="m-2">
+    <input type="text" id="username">
+</div>

@@ -1,4 +1,5 @@
 {
-	"APP_TITLE": "WELCOME TO USE ANGULAR",
-	"dashboard.title.label": "DASHBOARD"
+    "APP_TITLE": "WELCOME TO USE ANGULAR",
+    "home.title.label": "Home",
+    "dashboard.title.label": "Dashboard"
 }

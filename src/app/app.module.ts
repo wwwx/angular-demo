@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Inject, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -11,7 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoggerService } from './service/logger.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { BlockItemComponent } from './components/block-item/block-item.component';
@@ -19,6 +19,7 @@ import { LoadingService } from './shared/loading.service';
 import { NetworkInterceptor } from './service/network.interceptor';
 import { LanguageSelectComponent } from './components/language-select/language-select.component';
 import { EmojiComponent } from './components/emoji/emoji.component';
+import { AlgorithmComponent } from './components/algorithm/algorithm.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -34,6 +35,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         BlockItemComponent,
         LanguageSelectComponent,
         EmojiComponent,
+        AlgorithmComponent,
     ],
     imports: [
         BrowserModule,
@@ -54,8 +56,15 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
             }
         }),
     ],
-    providers: [LoggerService, LoadingService, { provide: HTTP_INTERCEPTORS, useClass: NetworkInterceptor, multi: true }],
+    providers: [
+        LoggerService, LoadingService,
+        { provide: HTTP_INTERCEPTORS, useClass: NetworkInterceptor, multi: true },
+        { provide: LOCALE_ID, useValue: 'en' }
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {
+    constructor(private translate: TranslateService, @Inject(LOCALE_ID) locale: string) {
+        translate.use(locale);
+    }
 }
