@@ -1,0 +1,25 @@
+<div class="m-3">
+    <button class="btn btn-primary" (click)="queue.enqueue(randomNum)">enqueue</button>
+    <button class="btn btn-primary ml-2" (click)="queue.dequeue()">dequeue</button>
+    <button class="btn btn-primary ml-2" (click)="queue.clear()">clear</button>
+</div>
+
+<div class="m-3">
+    queue: {{ queue.items | json }}
+</div>
+
+<div class="m-3">
+    size: {{ queue.size() }}
+</div>
+
+<div class="m-3">
+    isEmpty: {{ queue.isEmpty() }}
+</div>
+
+<div class="m-3">
+    head: {{ queue.head() }}
+</div>
+
+<div class="m-3">
+    tail: {{ queue.tail() }}
+</div>

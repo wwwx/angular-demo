@@ -3,6 +3,7 @@ import { LoggerService } from '../../service/logger.service';
 import { TranslateService } from '@ngx-translate/core';
 import { LoadingService } from '../../shared/loading.service';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import * as htmlToImage from 'html-to-image';
 
 @Component({
     selector: 'app-dashboard',
@@ -12,6 +13,8 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 })
 export class DashboardComponent implements OnInit {
     isOpen = false;
+    shouldHideDashboard = false;
+    imageDataUrl = '';
     loading$ = this.loader.loading$;
     topics = [];
 
@@ -44,6 +47,12 @@ export class DashboardComponent implements OnInit {
 
     clearTopics(): void {
         this.topics = [];
+    }
+
+    async html2Image(): Promise<boolean> {
+        this.imageDataUrl = await htmlToImage.toPng(document.getElementById('dashboard') as HTMLDivElement);
+        this.shouldHideDashboard = true;
+        return true;
     }
 
 }

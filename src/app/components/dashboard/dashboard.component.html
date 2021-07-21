@@ -3,8 +3,9 @@
     <button type="button" class="btn btn-primary mx-2" (click)="loader.hide()">hide</button>
     <button type="button" class="btn btn-primary mx-2" (click)="fetchTopics()">Fetch Topics</button>
     <button type="button" class="btn btn-primary mx-2" (click)="clearTopics()">Clear</button>
+    <button type="button" class="btn btn-primary mx-2" (click)="html2Image()">html to image</button>
 </div>
-<div class="container mx-auto">
+<div class="container mx-auto"  *ngIf="!shouldHideDashboard">
 
     <div class="flex-grow-1">
         <div class="spinner-border text-danger" role="status" *ngIf="loading$ | async">
@@ -16,7 +17,7 @@
         <app-emoji class="block"></app-emoji>
         <input type="number" vlalue="xxxxx">
     </div>
-    <div class="">
+    <div class="" id="dashboard">
         <canvas app-block-item style="width: 500px; height: 350px;"></canvas>
     </div>
     <div class="flex space-x-4">
@@ -24,5 +25,10 @@
         <div class="flex-auto h-20 bg-yellow-400 rounded">middle length</div>
         <div class="flex-auto h-20 bg-yellow-400">long text and ...... end.</div>
     </div>
+</div>
+
+
+<div class="container mx-auto" *ngIf="shouldHideDashboard">
+    <img [src]="imageDataUrl" alt="">
 </div>
 

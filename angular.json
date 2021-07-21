@@ -33,9 +33,13 @@
                             "src/tailwind.css"
                         ],
                         "styles": [
-                            "src/styles.css"
+                            "src/styles.css",
+                            "node_modules/highlight.js/styles/github.css"
                         ],
                         "scripts": [],
+                        "allowedCommonJsDependencies":[
+                            "highlight.js"
+                        ],
                         "serviceWorker": true,
                         "ngswConfigPath": "ngsw-config.json"
                     },

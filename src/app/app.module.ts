@@ -20,6 +20,11 @@ import { NetworkInterceptor } from './service/network.interceptor';
 import { LanguageSelectComponent } from './components/language-select/language-select.component';
 import { EmojiComponent } from './components/emoji/emoji.component';
 import { AlgorithmComponent } from './components/algorithm/algorithm.component';
+import { StackComponent } from './components/algorithm/stack/stack.component';
+import { QueueComponent } from './components/algorithm/queue/queue.component';
+import { TreeMenuComponent } from './components/algorithm/tree-menu/tree-menu.component';
+import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
+import { HtmlToIamgeComponent } from './components/html-to-iamge/html-to-iamge.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -36,12 +41,17 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         LanguageSelectComponent,
         EmojiComponent,
         AlgorithmComponent,
+        StackComponent,
+        QueueComponent,
+        TreeMenuComponent,
+        HtmlToIamgeComponent,
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        HighlightModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: environment.production,
             // Register the ServiceWorker as soon as the app is stable
@@ -59,7 +69,13 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     providers: [
         LoggerService, LoadingService,
         { provide: HTTP_INTERCEPTORS, useClass: NetworkInterceptor, multi: true },
-        { provide: LOCALE_ID, useValue: 'en' }
+        { provide: LOCALE_ID, useValue: 'en' },
+        {
+            provide: HIGHLIGHT_OPTIONS,
+            useValue: {
+                fullLibraryLoader: () => import('highlight.js'),
+            }
+        }
     ],
     bootstrap: [AppComponent],
 })
