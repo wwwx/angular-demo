@@ -1,5 +1,6 @@
 <div class="m-2">
     <button type="button" class="btn btn-primary" (click)="toggle()">click</button>
+    <button type="button" class="btn btn-primary ml-4" (click)="toggleDraggleDialog()"> draggable dialog</button>
     <button type="button" class="btn btn-primary ml-4" (click)="testHttp()">text http</button>
     <button type="button" class="btn btn-primary ml-4" (click)="test()">test click</button>
     <button type="button" class="btn btn-primary ml-4" id="btn">stop interval</button>
@@ -9,6 +10,8 @@
     <button type="button" class="btn btn-danger ml-4" (click)="testMerge()">test merge</button>
     <button type="button" class="btn btn-danger ml-4" (click)="testZip()">test zip</button>
     <app-popup [isOpen]="isOpen"></app-popup>
+    <app-draggable-dialog [visible]="draggableDialogVisible"
+                          (closeEvent)="draggableDialogVisible = false;"></app-draggable-dialog>
 </div>
 
 <div class="m-2">

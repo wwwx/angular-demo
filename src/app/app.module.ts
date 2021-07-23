@@ -25,6 +25,8 @@ import { QueueComponent } from './components/algorithm/queue/queue.component';
 import { TreeMenuComponent } from './components/algorithm/tree-menu/tree-menu.component';
 import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
 import { HtmlToIamgeComponent } from './components/html-to-iamge/html-to-iamge.component';
+import { DraggableDialogComponent } from './components/draggable-dialog/draggable-dialog.component';
+import { SharedModule } from './shared/shared.module';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -45,11 +47,13 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         QueueComponent,
         TreeMenuComponent,
         HtmlToIamgeComponent,
+        DraggableDialogComponent,
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
+        SharedModule,
         HttpClientModule,
         HighlightModule,
         ServiceWorkerModule.register('ngsw-worker.js', {

@@ -1,0 +1,10 @@
+<div *ngIf="visible" appDraggable
+     class="dialog w-96 h-24  bottom-10 left-2 overflow-hidden   rounded shadow-sm bg-white  select-none"
+>
+    <div appDraggableHandle class="dialog-header flex justify-between cursor-move bg-blue-500 text-white p-3">
+        <span>Hello world;</span>
+        <button class="leading-none text-xl" (click)="onClose($event)">&times;</button>
+    </div>
+    <div class="dialog-body px-3"></div>
+    <div class="dialog-footer p-3 "></div>
+</div>

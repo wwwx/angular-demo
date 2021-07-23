@@ -24,7 +24,7 @@ import {
 })
 export class HomeComponent implements OnInit {
     isOpen = false;
-
+    draggableDialogVisible = false;
     COUNT = 5;
 
     constructor(private logger: LoggerService, private http: HttpClientService) {
@@ -65,6 +65,10 @@ export class HomeComponent implements OnInit {
 
         const loggers = this.logger.get();
         console.log(loggers.join(', '));
+    }
+
+    toggleDraggleDialog(): void {
+        this.draggableDialogVisible = !this.draggableDialogVisible;
     }
 
 
