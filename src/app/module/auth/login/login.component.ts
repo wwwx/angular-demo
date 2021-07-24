@@ -12,7 +12,7 @@ import { ValidatePassword } from './validate-password';
 export class LoginComponent implements OnInit {
     loginForm: FormGroup = this.fb.group({
         email: [null, [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')]],
-        password: [null, [Validators.required, Validators.minLength(6), ValidatePassword]]
+        password: [null, [Validators.required, Validators.minLength(6), ValidatePassword.MatchPassword ]]
     });
 
     submitted = false;

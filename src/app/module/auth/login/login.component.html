@@ -14,7 +14,7 @@
              *ngIf="submitted && loginForm.controls.password.errors?.minLength">Password must be 6 character at
             least
         </div>
-        <div class="invalid-feedback text-red-500" *ngIf="submitted && loginForm.controls.password.errors?.M">Must start with 'Nwd'</div>
+        <div class="invalid-feedback text-red-500" *ngIf="submitted && loginForm.controls.password.errors?.MatchPassword">Must start with 'Nwd'</div>
     </div>
     <button type="button" class="w-full btn btn-primary mt-3" (click)="submit()">SIGN
         IN

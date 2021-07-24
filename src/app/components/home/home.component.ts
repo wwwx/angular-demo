@@ -59,6 +59,7 @@ export class HomeComponent implements OnInit {
 
     }
 
+
     toggle(): void {
         this.isOpen = !this.isOpen;
         this.logger.add(this.isOpen.toString());
