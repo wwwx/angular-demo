@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { LoggerService } from '../../service/logger.service';
 import { HttpClientService } from '../../shared/http-client.service';
-import { fromEvent, interval, Observable, of, timer, merge, empty, zip } from 'rxjs';
+import { fromEvent, interval, Observable, of, timer, merge, empty, zip, Subject, BehaviorSubject } from 'rxjs';
 import {
     concat, concatAll,
     concatMap,
-    concatMapTo, debounceTime,
+    concatMapTo, debounceTime, distinctUntilChanged,
     finalize, map,
     mapTo, mergeAll, mergeMap, pluck,
     scan,
@@ -26,6 +26,9 @@ export class HomeComponent implements OnInit {
     isOpen = false;
     draggableDialogVisible = false;
     COUNT = 5;
+    toggler = new BehaviorSubject<boolean>(false);
+    toggler$ = this.toggler.asObservable();
+    searchText$ = new Subject<string>();
 
     constructor(private logger: LoggerService, private http: HttpClientService) {
     }
@@ -53,11 +56,33 @@ export class HomeComponent implements OnInit {
         // );
         // timer$.subscribe(console.log);
 
+        // =====================
+
+        // timer(0, 1000)
+        //     .subscribe(console.log);
+
+        // const source = of(1, 2, 3);
+        // timer(3000).pipe(
+        //     concatMapTo(source)
+        // ).subscribe(console.log);
+
 
         // =====================
-        this.testInput();
+        // this.testInput();
+        this.toggler$.subscribe(console.log);
+        this.searchText$.asObservable().pipe(
+            debounceTime(500),
+            distinctUntilChanged()
+        ).subscribe(console.log);
 
     }
+
+
+    testSubject(): void {
+        this.isOpen = !this.isOpen;
+        this.toggler.next(this.isOpen);
+    }
+
 
     toggle(): void {
         this.isOpen = !this.isOpen;
@@ -102,30 +127,23 @@ export class HomeComponent implements OnInit {
             takeWhile(() => this.COUNT > 0)
         ).subscribe();
 
-        // timer(0, 1000)
-        //     .subscribe(console.log);
-
-        // const source = of(1, 2, 3);
-        // timer(3000).pipe(
-        //     concatMapTo(source)
-        // ).subscribe(console.log);
 
     }
 
     testConcat(): void {
-        const source1 = of(1, 2, 3);
-        const source2 = of(4, 5, 6);
-        const result = source1.pipe(concat(source2));
-        result.subscribe(console.log);
+        // const source1 = of(1, 2, 3);
+        // const source2 = of(4, 5, 6);
+        // const result = source1.pipe(concat(source2));
+        // result.subscribe(console.log);
     }
 
     testCreate(): void {
-        const hello = Observable.create((observer: any) => {
-            observer.next('Hello');
-            observer.next('World;');
-        });
-
-        hello.subscribe(console.log);
+        // const hello = Observable.create((observer: any) => {
+        //     observer.next('Hello');
+        //     observer.next('World;');
+        // });
+        //
+        // hello.subscribe(console.log);
     }
 
     testMerge(): void {
@@ -153,6 +171,13 @@ export class HomeComponent implements OnInit {
         const inputEl = document.getElementById('username') as HTMLInputElement;
         const input$ = fromEvent(inputEl, 'keyup').pipe(debounceTime(500), pluck('target', 'value'));
         input$.subscribe(console.log);
+
+    }
+
+    search(event: KeyboardEvent): void {
+        // console.log(event);
+        const value = (event.target as HTMLInputElement).value;
+        this.searchText$.next(value);
 
     }
 

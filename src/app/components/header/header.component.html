@@ -5,6 +5,7 @@
         <li class="mx-2"><a routerLink="/home">{{ 'home.title.label' | translate | uppercase }}</a></li>
         <li class="mx-2"><a routerLink="/dashboard">{{ 'dashboard.title.label' | translate | uppercase }}</a></li>
         <li class="mx-2"><a routerLink="/algorithm">{{ 'algothrim.title.label' | translate | uppercase }}</a></li>
+        <li class="mx-2"><a routerLink="/http">{{ 'http.title.label' | translate | uppercase }}</a></li>
         <li class="mx-2"><a href="javascript:;" (click)="authService.logout()"
                             *ngIf="authService.isLoggedIn()">Logout</a></li>
     </ul>

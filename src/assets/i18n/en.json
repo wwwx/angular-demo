@@ -1,5 +1,7 @@
 {
     "APP_TITLE": "WELCOME TO USE ANGULAR",
     "home.title.label": "Home",
+    "algothrim.title.label": "Algorithm",
+    "http.title.label": "Http",
     "dashboard.title.label": "Dashboard"
 }

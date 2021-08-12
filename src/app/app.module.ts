@@ -27,6 +27,8 @@ import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
 import { HtmlToIamgeComponent } from './components/html-to-iamge/html-to-iamge.component';
 import { DraggableDialogComponent } from './components/draggable-dialog/draggable-dialog.component';
 import { SharedModule } from './shared/shared.module';
+import { RangeComponent } from './components/range/range.component';
+import { HttpComponent } from './components/http/http.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -48,6 +50,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         TreeMenuComponent,
         HtmlToIamgeComponent,
         DraggableDialogComponent,
+        RangeComponent,
+        HttpComponent,
     ],
     imports: [
         BrowserModule,

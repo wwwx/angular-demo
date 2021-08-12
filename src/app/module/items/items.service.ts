@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {delay} from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 export class Item {
-    constructor(public id: number, public title: string) {}
+    constructor(public id: number, public title: string) {
+    }
 }
 
 const ITEMS: Item[] = [
@@ -11,14 +12,15 @@ const ITEMS: Item[] = [
     new Item(2, 'Dry erase markers'),
     new Item(3, 'Erasers'),
     new Item(4, 'Whiteboard cleaners')
-]
+];
 
 const FETCH_LATENCY = 500;
 
 @Injectable()
 export class ItemsService {
 
-    constructor() { }
+    constructor() {
+    }
 
     getItems(): Observable<Item[]> {
         return of(ITEMS).pipe(delay(FETCH_LATENCY));
