@@ -1,6 +1,6 @@
 <div class="m-2 space-x-2 space-y-1">
     <button type="button" class="btn btn-primary" (click)="toggle()">click</button>
-    <button type="button" class="btn btn-primary" (click)="toggleDraggleDialog()"> draggable dialog</button>
+    <button type="button" class="btn btn-primary" (click)="toggleDraggleDialog()">draggable dialog</button>
     <button type="button" class="btn btn-primary" (click)="testHttp()">text http</button>
     <button type="button" class="btn btn-primary" (click)="test()">test click</button>
     <button type="button" class="btn btn-primary" id="btn">stop interval</button>
@@ -10,9 +10,9 @@
     <button type="button" class="btn btn-danger" (click)="testMerge()">test merge</button>
     <button type="button" class="btn btn-danger" (click)="testZip()">test zip</button>
     <button type="button" class="btn btn-danger" (click)="testSubject()">test subject</button>
+    <button type="button" class="btn btn-danger" (click)="openToast()">open toast</button>
     <app-popup [isOpen]="isOpen"></app-popup>
-    <app-draggable-dialog [visible]="draggableDialogVisible"
-                          (closeEvent)="draggableDialogVisible = false;"></app-draggable-dialog>
+    <app-draggable-dialog [visible]="draggableDialogVisible" (closeEvent)="draggableDialogVisible = false"></app-draggable-dialog>
 </div>
 
 <div class="m-2 space-x-2 space-y-1">
@@ -21,7 +21,7 @@
 </div>
 
 <div class="m-2">
-    <input type="text" id="username" (keyup)="search($event)">
+    <input type="text" id="username" (keyup)="search($event)" />
 </div>
 
 <div class="m-2">

@@ -1,4 +1,4 @@
-import { Inject, LOCALE_ID, NgModule } from '@angular/core';
+import { Inject, LOCALE_ID, NgModule, InjectionToken } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -29,6 +29,9 @@ import { DraggableDialogComponent } from './components/draggable-dialog/draggabl
 import { SharedModule } from './shared/shared.module';
 import { RangeComponent } from './components/range/range.component';
 import { HttpComponent } from './components/http/http.component';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { ToastComponent } from './components/toast/toast.component';
+import { APP_CONFIG, HERO_DI_CONFIG } from './models/app-config.model';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -52,6 +55,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         DraggableDialogComponent,
         RangeComponent,
         HttpComponent,
+        ToastComponent,
     ],
     imports: [
         BrowserModule,
@@ -60,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         SharedModule,
         HttpClientModule,
         HighlightModule,
+        OverlayModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: environment.production,
             // Register the ServiceWorker as soon as the app is stable
@@ -70,20 +75,22 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
             loader: {
                 provide: TranslateLoader,
                 useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
+                deps: [HttpClient],
+            },
         }),
     ],
     providers: [
-        LoggerService, LoadingService,
+        LoggerService,
+        LoadingService,
         { provide: HTTP_INTERCEPTORS, useClass: NetworkInterceptor, multi: true },
         { provide: LOCALE_ID, useValue: 'en' },
         {
             provide: HIGHLIGHT_OPTIONS,
             useValue: {
                 fullLibraryLoader: () => import('highlight.js'),
-            }
-        }
+            },
+        },
+        { provide: APP_CONFIG, useValue: HERO_DI_CONFIG },
     ],
     bootstrap: [AppComponent],
 })
