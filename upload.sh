@@ -1,6 +1,7 @@
 #!/bin/bash
-ssh root@youbear.fun 'rm -rf /home/angular-demo'
-rsync -av --exclude="node_modules" ./ root@youbear.fun:/home/angular-demo/
+project_path='/home/angular-demo'
+ssh root@youbear.fun 'rm -rf ${project_path}'
+rsync -av --exclude=node_modules --exclude=dist --exclude=src/tailwind.css ./ root@youbear.fun:${project_path}/
 exit
 eeooff
 echo done
