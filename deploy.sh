@@ -1,5 +1,4 @@
 #!/bin/bash
-# npm run build
 target_base_dir="/home/h5/angular-demo"
 append_dir=$1
 target_dir="${target_base_dir}/${append_dir}"

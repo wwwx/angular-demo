@@ -87,7 +87,14 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         {
             provide: HIGHLIGHT_OPTIONS,
             useValue: {
-                fullLibraryLoader: () => import('highlight.js'),
+                // fullLibraryLoader: () => import('highlight.js'),
+                coreLibraryLoader: () => import('highlight.js/lib/core'),
+                lineNumbersLoader: () => import('highlightjs-line-numbers.js'), // Optional, only if you want the line numbers
+                languages: {
+                    typescript: () => import('highlight.js/lib/languages/typescript'),
+                    css: () => import('highlight.js/lib/languages/css'),
+                    xml: () => import('highlight.js/lib/languages/xml'),
+                },
             },
         },
         { provide: APP_CONFIG, useValue: HERO_DI_CONFIG },
