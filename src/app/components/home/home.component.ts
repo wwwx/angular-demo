@@ -100,6 +100,7 @@ export class HomeComponent implements OnInit {
         this.toggler.next(this.isOpen);
     }
 
+
     toggle(): void {
         this.isOpen = !this.isOpen;
         this.logger.add(this.isOpen.toString());

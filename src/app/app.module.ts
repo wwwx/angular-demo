@@ -33,6 +33,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { ToastComponent } from './components/toast/toast.component';
 import { APP_CONFIG, HERO_DI_CONFIG } from './models/app-config.model';
 
+
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
