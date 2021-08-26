@@ -6,7 +6,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } fr
     styleUrls: ['./range.component.css']
 })
 export class RangeComponent implements AfterViewInit {
-    rangeValue = '3'
+    rangeValue = '3';
     @ViewChild('tempture') range!: ElementRef<HTMLInputElement>;
 
     constructor(private rd: Renderer2) {

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-items-detail',
-  template: '<h3 appHighlight>items detail</h3><div>item id: {{ id }}</div><a href="javascript:history.back();">go back</a>',
+    selector: 'app-items-detail',
+    template: '<h3 appHighlight>items detail</h3><div>item id: {{ id }}</div><a href="javascript:history.back();">go back</a>',
 })
-export class ItemsDetailComponent implements OnInit{
-    id = 0
+export class ItemsDetailComponent implements OnInit {
+    id = 0;
 
     constructor(private route: ActivatedRoute) {
     }
